@@ -1,0 +1,452 @@
+{
+  "le-havre": {
+    "nom": "Le Havre",
+    "region": "Manche Est",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "04:19",
+        "height": 6.679,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "11:44",
+        "height": 3.31
+      },
+      "coef": 46
+    }
+  },
+  "dieppe": {
+    "nom": "Dieppe",
+    "region": "Manche Est",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "05:41",
+        "height": 7.326,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "00:04",
+        "height": 2.631
+      },
+      "coef": 42
+    }
+  },
+  "ouistreham": {
+    "nom": "Ouistreham",
+    "region": "Normandie",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "04:14",
+        "height": 6.342,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "11:30",
+        "height": 3.09
+      },
+      "coef": 46
+    }
+  },
+  "port-en-bessin": {
+    "nom": "Port-en-Bessin",
+    "region": "Normandie",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "04:10",
+        "height": 5.779,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "11:04",
+        "height": 2.744
+      },
+      "coef": 46
+    }
+  },
+  "cherbourg": {
+    "nom": "Cherbourg",
+    "region": "Normandie",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "02:47",
+        "height": 5.128,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "09:44",
+        "height": 2.793
+      },
+      "coef": 46
+    }
+  },
+  "carteret": {
+    "nom": "Carteret",
+    "region": "Normandie",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "01:08",
+        "height": 8.369,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "08:12",
+        "height": 3.88
+      },
+      "coef": 46
+    }
+  },
+  "granville": {
+    "nom": "Granville",
+    "region": "Normandie",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "00:45",
+        "height": 9.837,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "07:57",
+        "height": 4.475
+      },
+      "coef": 46
+    }
+  },
+  "saint-malo": {
+    "nom": "Saint-Malo",
+    "region": "Bretagne Nord",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "00:41",
+        "height": 9.458,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "07:38",
+        "height": 4.691
+      },
+      "coef": 46
+    }
+  },
+  "cancale": {
+    "nom": "Cancale",
+    "region": "Bretagne Nord",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "00:54",
+        "height": 10.551,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "07:01",
+        "height": 6.245
+      },
+      "coef": 46
+    }
+  },
+  "paimpol": {
+    "nom": "Paimpol",
+    "region": "Bretagne Nord",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "00:38",
+        "height": 8.072,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "07:15",
+        "height": 3.669
+      },
+      "coef": 46
+    }
+  },
+  "perros-guirec": {
+    "nom": "Perros-Guirec",
+    "region": "Bretagne Nord",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "00:19",
+        "height": 7.272,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "06:45",
+        "height": 3.407
+      },
+      "coef": 46
+    }
+  },
+  "roscoff": {
+    "nom": "Roscoff",
+    "region": "Bretagne Nord",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "12:27",
+        "height": 7.113,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "06:19",
+        "height": 3.711
+      },
+      "coef": 42
+    }
+  },
+  "brest": {
+    "nom": "Brest",
+    "region": "Bretagne Nord",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "11:35",
+        "height": 5.638,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:28",
+        "height": 3.015
+      },
+      "coef": 42
+    }
+  },
+  "concarneau": {
+    "nom": "Concarneau",
+    "region": "Bretagne Sud",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "11:36",
+        "height": 4.09,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:09",
+        "height": 2.197
+      },
+      "coef": 42
+    }
+  },
+  "lorient": {
+    "nom": "Lorient",
+    "region": "Bretagne Sud",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "11:40",
+        "height": 4.203,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:11",
+        "height": 2.276
+      },
+      "coef": 42
+    }
+  },
+  "vannes": {
+    "nom": "Vannes",
+    "region": "Bretagne Sud",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "01:11",
+        "height": 2.543,
+        "coef": 46
+      },
+      "bm": {
+        "type": "BM",
+        "time": "07:16",
+        "height": 0.907
+      },
+      "coef": 46
+    }
+  },
+  "le-croisic": {
+    "nom": "Le Croisic",
+    "region": "Bretagne Sud",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "12:12",
+        "height": 4.256,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:07",
+        "height": 2.047
+      },
+      "coef": 42
+    }
+  },
+  "saint-nazaire": {
+    "nom": "Saint-Nazaire",
+    "region": "Vendee & Charente",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "12:18",
+        "height": 4.692,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:15",
+        "height": 2.392
+      },
+      "coef": 42
+    }
+  },
+  "pornic": {
+    "nom": "Pornic",
+    "region": "Vendee & Charente",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "12:35",
+        "height": 4.594,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:11",
+        "height": 2.196
+      },
+      "coef": 42
+    }
+  },
+  "la-rochelle-pallice": {
+    "nom": "La Rochelle",
+    "region": "Vendee & Charente",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "12:31",
+        "height": 5.093,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "04:58",
+        "height": 2.665
+      },
+      "coef": 42
+    }
+  },
+  "royan": {
+    "nom": "Royan",
+    "region": "Vendee & Charente",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "12:19",
+        "height": 4.604,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:17",
+        "height": 2.504
+      },
+      "coef": 42
+    }
+  },
+  "cap-ferret": {
+    "nom": "Cap Ferret",
+    "region": "Gironde & Landes",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "12:04",
+        "height": 2.851,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:53",
+        "height": 1.073
+      },
+      "coef": 42
+    }
+  },
+  "biscarrosse": {
+    "nom": "Biscarrosse",
+    "region": "Gironde & Landes",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "11:16",
+        "height": 3.432,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "04:40",
+        "height": 1.588
+      },
+      "coef": 42
+    }
+  },
+  "mimizan": {
+    "nom": "Mimizan",
+    "region": "Gironde & Landes",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "11:34",
+        "height": 3.802,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "05:00",
+        "height": 2.188
+      },
+      "coef": 42
+    }
+  },
+  "saint-jean-de-luz": {
+    "nom": "Saint-Jean-de-Luz",
+    "region": "Pays Basque",
+    "aujourd": {
+      "pm": {
+        "type": "PM",
+        "time": "11:17",
+        "height": 3.595,
+        "coef": 42
+      },
+      "bm": {
+        "type": "BM",
+        "time": "04:40",
+        "height": 1.816
+      },
+      "coef": 42
+    }
+  }
+}
