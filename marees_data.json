@@ -1,0 +1,52 @@
+{
+  "le_havre": {
+    "nom": "Le Havre",
+    "zone": "Manche Est",
+    "coef_max": null
+  },
+  "cherbourg": {
+    "nom": "Cherbourg",
+    "zone": "Manche Ouest",
+    "coef_max": null
+  },
+  "saint_malo": {
+    "nom": "Saint-Malo",
+    "zone": "Manche Ouest",
+    "coef_max": null
+  },
+  "brest": {
+    "nom": "Brest",
+    "zone": "Atlantique Nord",
+    "coef_max": null
+  },
+  "concarneau": {
+    "nom": "Concarneau",
+    "zone": "Atlantique Nord",
+    "coef_max": null
+  },
+  "lorient": {
+    "nom": "Lorient",
+    "zone": "Atlantique Sud",
+    "coef_max": null
+  },
+  "saint_nazaire": {
+    "nom": "Saint-Nazaire",
+    "zone": "Atlantique Sud",
+    "coef_max": null
+  },
+  "les_sables": {
+    "nom": "Les Sables",
+    "zone": "Atlantique Sud",
+    "coef_max": null
+  },
+  "la_rochelle": {
+    "nom": "La Rochelle",
+    "zone": "Atlantique Sud",
+    "coef_max": null
+  },
+  "arcachon": {
+    "nom": "Arcachon",
+    "zone": "Atlantique Sud",
+    "coef_max": null
+  }
+}

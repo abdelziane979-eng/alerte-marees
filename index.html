@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alerte Marees</title>
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1e3a8a">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+         margin: 0; padding: 16px; background: #f0f4f8; color: #222;
+         display: flex; flex-direction: column; align-items: center; }
+  header, h2, .stations, .date { width: 100%; max-width: 700px; }
+  header { background: linear-gradient(135deg, #1e3a8a, #1e40af);
+            color: white; padding: 20px; border-radius: 12px;
+            margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  h1 { margin: 0; font-size: 1.3em; }
+  .compteur { margin-top: 8px; font-size: 1em; opacity: 0.95; }
+  h2 { font-size: 1em; color: #1e3a8a; margin: 20px 0 10px 0;
+        border-bottom: 2px solid #1e3a8a; padding-bottom: 4px; }
+  .stations { display: grid; gap: 10px; grid-template-columns: 1fr; }
+  @media (min-width: 600px) {
+    .stations { grid-template-columns: 1fr 1fr; }
+  }
+  .station { background: white; padding: 14px; border-radius: 10px;
+              box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: relative; }
+  .nom { font-weight: bold; font-size: 1em; padding-right: 90px; }
+  .badge { position: absolute; top: 10px; right: 10px;
+            font-size: 0.7em; color: white; padding: 4px 8px;
+            border-radius: 4px; font-weight: bold; }
+  .badge-ok { background: #059669; }
+  .badge-warn { background: #e80; }
+  .badge-danger { background: #c00; }
+  .badge-info { background: #888; }
+  .date { text-align: center; color: #888; font-size: 0.85em; margin: 20px 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🌊 Alerte Marees</h1>
+  <div class="compteur">10 ports surveilles</div>
+</header>
+<h2>Atlantique Nord</h2><div class="stations">
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Brest</div>
+            </div>
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Concarneau</div>
+            </div></div><h2>Atlantique Sud</h2><div class="stations">
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Arcachon</div>
+            </div>
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">La Rochelle</div>
+            </div>
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Les Sables</div>
+            </div>
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Lorient</div>
+            </div>
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Saint-Nazaire</div>
+            </div></div><h2>Manche Est</h2><div class="stations">
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Le Havre</div>
+            </div></div><h2>Manche Ouest</h2><div class="stations">
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Cherbourg</div>
+            </div>
+            <div class="station">
+                <div class="badge badge-info">N/A</div>
+                <div class="nom">Saint-Malo</div>
+            </div></div>
+<div class="date">Derniere mise a jour : 15/10/2026 a 11h18</div>
+</body>
+</html>
