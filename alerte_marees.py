@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Alerte Marees - Ports de peche (Atlantique / Manche)
+Alerte Marees - Ports de France
+Surveille les marees de 25 ports (Manche, Atlantique, Mer du Nord)
 Version GitHub avec cle API + topic depuis variables d'environnement
 """
 
 import requests
 import json
 import os
+import time
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from PIL import Image, ImageDraw
@@ -18,32 +20,59 @@ from PIL import Image, ImageDraw
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "ALERTEMAREES24")
 API_KEY = os.environ.get("MAREES_API_KEY", "")
 
-FICHIER_ETAT = "etat_marees.json"
-FICHIER_RECAP = "recap_dernier.json"
-DOSSIER_PUBLIC = "."
-HEURE_RECAP = 8
+URL_API = "https://api-maree.fr/tide-extrema"
 
-# Ports surveilles (code port -> nom + zone)
+# Ports groupes par region
 PORTS = {
-    "le_havre":        {"nom": "Le Havre",        "zone": "Manche Est"},
-    "cherbourg":       {"nom": "Cherbourg",       "zone": "Manche Ouest"},
-    "saint_malo":      {"nom": "Saint-Malo",      "zone": "Manche Ouest"},
-    "brest":           {"nom": "Brest",           "zone": "Atlantique Nord"},
-    "concarneau":      {"nom": "Concarneau",      "zone": "Atlantique Nord"},
-    "lorient":         {"nom": "Lorient",         "zone": "Atlantique Sud"},
-    "saint_nazaire":   {"nom": "Saint-Nazaire",   "zone": "Atlantique Sud"},
-    "les_sables":      {"nom": "Les Sables",      "zone": "Atlantique Sud"},
-    "la_rochelle":     {"nom": "La Rochelle",     "zone": "Atlantique Sud"},
-    "arcachon":        {"nom": "Arcachon",        "zone": "Atlantique Sud"},
+    "Manche Est": [
+        {"id": "le-havre", "nom": "Le Havre"},
+        {"id": "dieppe", "nom": "Dieppe"},
+    ],
+    "Normandie": [
+        {"id": "ouistreham", "nom": "Ouistreham"},
+        {"id": "port-en-bessin", "nom": "Port-en-Bessin"},
+        {"id": "cherbourg", "nom": "Cherbourg"},
+        {"id": "carteret", "nom": "Carteret"},
+        {"id": "granville", "nom": "Granville"},
+    ],
+    "Bretagne Nord": [
+        {"id": "saint-malo", "nom": "Saint-Malo"},
+        {"id": "cancale", "nom": "Cancale"},
+        {"id": "paimpol", "nom": "Paimpol"},
+        {"id": "perros-guirec", "nom": "Perros-Guirec"},
+        {"id": "roscoff", "nom": "Roscoff"},
+        {"id": "brest", "nom": "Brest"},
+    ],
+    "Bretagne Sud": [
+        {"id": "concarneau", "nom": "Concarneau"},
+        {"id": "lorient", "nom": "Lorient"},
+        {"id": "vannes", "nom": "Vannes"},
+        {"id": "le-croisic", "nom": "Le Croisic"},
+    ],
+    "Vendee & Charente": [
+        {"id": "saint-nazaire", "nom": "Saint-Nazaire"},
+        {"id": "pornic", "nom": "Pornic"},
+        {"id": "la-rochelle-pallice", "nom": "La Rochelle"},
+        {"id": "royan", "nom": "Royan"},
+    ],
+    "Gironde & Landes": [
+        {"id": "cap-ferret", "nom": "Cap Ferret"},
+        {"id": "biscarrosse", "nom": "Biscarrosse"},
+        {"id": "mimizan", "nom": "Mimizan"},
+    ],
+    "Pays Basque": [
+        {"id": "saint-jean-de-luz", "nom": "Saint-Jean-de-Luz"},
+    ],
 }
 
-# Seuils d'alerte (coefficient de maree)
-SEUIL_GRANDE_MAREE = 100
-SEUIL_TRES_GRANDE_MAREE = 110
+SEUIL_GRANDE_MAREE = 90
 
-URL_API_BASE = "https://api-maree.fr/v1"
+FICHIER_MEMOIRE = "etat_marees.json"
+FICHIER_RECAP = "recap_dernier.json"
+HEURE_RECAP = 8
 
 # ============================================================
+
 
 def charger_json(fichier, defaut):
     if os.path.exists(fichier):
@@ -61,7 +90,7 @@ def sauvegarder_json(fichier, data):
 
 
 def creer_icones_png():
-    """Genere les icones PNG 192x192 et 512x512 - vague bleue."""
+    """Genere les icones PNG 192x192 et 512x512 - vague bleue foncee."""
     for taille in (192, 512):
         img = Image.new("RGBA", (taille, taille), (0, 0, 0, 0))
         draw = ImageDraw.Draw(img)
@@ -70,23 +99,21 @@ def creer_icones_png():
         draw.rounded_rectangle(
             [marge, marge, taille - marge, taille - marge],
             radius=taille // 8,
-            fill=(30, 58, 138, 255),
+            fill=(12, 74, 110, 255),
         )
 
-        # Vague blanche
         points = []
-        for i in range(21):
-            x = int(taille * (0.15 + 0.70 * i / 20))
-            y = int(taille * (0.55 + 0.10 * (1 if i % 4 < 2 else -1)))
+        for i in range(0, taille + 1, 8):
+            x = i
+            y = int(taille * 0.55 + taille * 0.12 *
+                    (1 if (i // 8) % 2 == 0 else -1) *
+                    (1 - abs(i - taille/2) / (taille/2)))
             points.append((x, y))
-        draw.line(points, fill=(255, 255, 255, 255), width=max(3, taille // 50))
 
-        # Lune
-        draw.ellipse(
-            [int(taille * 0.68), int(taille * 0.15),
-             int(taille * 0.88), int(taille * 0.35)],
-            fill=(255, 255, 255, 255),
-        )
+        for offset, epaisseur in [(0, 6), (int(taille*0.12), 6), (int(taille*0.24), 6)]:
+            wave = [(x, y + offset) for (x, y) in points]
+            for i in range(len(wave) - 1):
+                draw.line([wave[i], wave[i+1]], fill=(255, 255, 255, 255), width=epaisseur)
 
         img.save(f"icon-{taille}.png")
         print(f"   Icone {taille}x{taille} generee")
@@ -96,11 +123,11 @@ def creer_manifest():
     manifest = {
         "name": "Alerte Marees",
         "short_name": "Marees",
-        "description": "Alertes grandes marees sur les ports francais",
+        "description": "Horaires de maree et coefficients des ports de France",
         "start_url": "./",
         "display": "standalone",
         "background_color": "#ffffff",
-        "theme_color": "#1e3a8a",
+        "theme_color": "#0c4a6e",
         "icons": [
             {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
             {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
@@ -111,15 +138,15 @@ def creer_manifest():
     print(f"   Manifest cree")
 
 
-def envoyer_notification(titre, message):
+def envoyer_notification(titre, message, priorite="max"):
     try:
         requests.post(
             f"https://ntfy.sh/{NTFY_TOPIC}",
             data=message.encode("utf-8"),
             headers={
                 "Title": titre.encode("utf-8"),
-                "Priority": "high",
-                "Tags": "ocean,moon,rotating_light",
+                "Priority": priorite,
+                "Tags": "ocean,water,wave",
             },
             timeout=10,
         )
@@ -128,83 +155,83 @@ def envoyer_notification(titre, message):
         print(f"[ERREUR] Envoi notification : {e}")
 
 
-def recuperer_marees(port_code, date_debut, date_fin):
-    """Recupere les marees depuis l'API api-maree.fr."""
-    if not API_KEY:
-        print("[ERREUR] Cle API manquante")
-        return None
-
-    url = f"{URL_API_BASE}/tides"
+def recuperer_marees(port_id, date_debut, date_fin):
+    """Recupere les marees pour un port sur une periode donnee."""
     params = {
+        "site": port_id,
+        "from": date_debut,
+        "to": date_fin,
+        "tz": "Europe/Paris",
         "key": API_KEY,
-        "port": port_code,
-        "start": date_debut,
-        "end": date_fin,
     }
-
     try:
-        r = requests.get(url, params=params, timeout=30)
-        r.raise_for_status()
-        return r.json()
+        r = requests.get(URL_API, params=params, timeout=15)
+        if r.status_code == 200:
+            return r.json()
+        elif r.status_code == 400:
+            print(f"   [ERREUR] Port invalide : {port_id}")
+        elif r.status_code == 401:
+            print(f"   [ERREUR] Cle API invalide ou rate limit")
+        else:
+            print(f"   [ERREUR] Status {r.status_code} pour {port_id}")
     except Exception as e:
-        print(f"   [ERREUR] API marees ({port_code}) : {e}")
-        return None
+        print(f"   [ERREUR] {port_id} : {type(e).__name__}")
+    return None
 
 
-def extraire_coef_max(data_api):
-    """Extrait le coefficient de maree max d'une reponse API."""
-    if not data_api:
-        return None
+def extraire_marees_jour(data, date_jour):
+    """Extrait les marees d'un jour donne."""
+    for j in data.get("data", []):
+        if j.get("date") == date_jour:
+            return j.get("extrema", [])
+    return []
 
-    coefs = []
-    for jour in data_api.get("data", data_api.get("tides", [])):
-        coef = jour.get("coef") or jour.get("coefficient")
-        if coef:
+
+def generer_page_html(ports_data, chemin="index.html"):
+    """Genere la page web avec toutes les marees."""
+    paris = datetime.now(ZoneInfo("Europe/Paris"))
+    date_heure = paris.strftime("%d/%m/%Y a %Hh%M")
+    aujourdhui = paris.strftime("%d/%m/%Y")
+
+    sections_html = ""
+    for region, ports in PORTS.items():
+        cards = []
+        for port in ports:
+            data = ports_data.get(port["id"])
+            if not data:
+                continue
+
+            aujourd = data.get("aujourd", {})
+            pm = aujourd.get("pm", {}) or {}
+            bm = aujourd.get("bm", {}) or {}
+            coef = aujourd.get("coef", "?")
+
+            coef_class = "coef-bas"
             try:
-                coefs.append(float(coef))
+                c = int(coef)
+                if c >= 90:
+                    coef_class = "coef-haut"
+                elif c >= 70:
+                    coef_class = "coef-moyen"
             except (ValueError, TypeError):
                 pass
 
-    if not coefs:
-        return None
-    return max(coefs)
+            cards.append(f'''
+            <div class="port">
+                <div class="port-nom">{port["nom"]}</div>
+                <div class="maree">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">{pm.get("time", "?")} - {pm.get("height", "?")}m</span>
+                </div>
+                <div class="maree">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">{bm.get("time", "?")} - {bm.get("height", "?")}m</span>
+                </div>
+                <div class="coef {coef_class}">Coef : {coef}</div>
+            </div>''')
 
-
-def generer_page_html(resultats, chemin="index.html"):
-    paris = datetime.now(ZoneInfo("Europe/Paris"))
-    date_heure = paris.strftime("%d/%m/%Y a %Hh%M")
-
-    zones = {}
-    for port_code, info in resultats.items():
-        zone = info.get("zone", "Autre")
-        if zone not in zones:
-            zones[zone] = []
-        zones[zone].append((port_code, info))
-
-    cards_html = ""
-    for zone, ports in sorted(zones.items()):
-        cards_html += f'<h2>{zone}</h2><div class="stations">'
-        for port_code, info in sorted(ports, key=lambda x: x[1].get("nom", "ZZZ")):
-            coef = info.get("coef_max")
-            if coef is None:
-                badge_class = "badge-info"
-                badge_txt = "N/A"
-            elif coef >= SEUIL_TRES_GRANDE_MAREE:
-                badge_class = "badge-danger"
-                badge_txt = f"COEF {coef:.0f}"
-            elif coef >= SEUIL_GRANDE_MAREE:
-                badge_class = "badge-warn"
-                badge_txt = f"COEF {coef:.0f}"
-            else:
-                badge_class = "badge-ok"
-                badge_txt = f"COEF {coef:.0f}"
-
-            cards_html += f'''
-            <div class="station">
-                <div class="badge {badge_class}">{badge_txt}</div>
-                <div class="nom">{info.get("nom", "?")}</div>
-            </div>'''
-        cards_html += '</div>'
+        if cards:
+            sections_html += f'<h2>{region}</h2><div class="ports">{"".join(cards)}</div>'
 
     html = f'''<!DOCTYPE html>
 <html lang="fr">
@@ -215,50 +242,77 @@ def generer_page_html(resultats, chemin="index.html"):
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1e3a8a">
+<meta name="theme-color" content="#0c4a6e">
 <style>
-  * {{ box-sizing: border-box; }}
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{ font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-         margin: 0; padding: 16px; background: #f0f4f8; color: #222;
-         display: flex; flex-direction: column; align-items: center; }}
-  header, h2, .stations, .date {{ width: 100%; max-width: 700px; }}
-  header {{ background: linear-gradient(135deg, #1e3a8a, #1e40af);
+         background: #f0f4f8; color: #222; padding: 12px;
+         max-width: 700px; margin: 0 auto; }}
+  header {{ background: linear-gradient(135deg, #0c4a6e, #082f49);
             color: white; padding: 20px; border-radius: 12px;
-            margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }}
-  h1 {{ margin: 0; font-size: 1.3em; }}
-  .compteur {{ margin-top: 8px; font-size: 1em; opacity: 0.95; }}
-  h2 {{ font-size: 1em; color: #1e3a8a; margin: 20px 0 10px 0;
-        border-bottom: 2px solid #1e3a8a; padding-bottom: 4px; }}
-  .stations {{ display: grid; gap: 10px; grid-template-columns: 1fr; }}
+            margin-bottom: 16px; text-align: center; }}
+  h1 {{ font-size: 1.3em; margin-bottom: 6px; }}
+  .date {{ font-size: 0.9em; opacity: 0.95; }}
+  h2 {{ font-size: 1.05em; color: #0c4a6e; margin: 20px 0 10px 0;
+        border-bottom: 2px solid #0c4a6e; padding-bottom: 4px; }}
+  .ports {{ display: grid; gap: 10px; grid-template-columns: 1fr; }}
   @media (min-width: 600px) {{
-    .stations {{ grid-template-columns: 1fr 1fr; }}
+    .ports {{ grid-template-columns: 1fr 1fr; }}
   }}
-  .station {{ background: white; padding: 14px; border-radius: 10px;
-              box-shadow: 0 1px 4px rgba(0,0,0,0.08); position: relative; }}
-  .nom {{ font-weight: bold; font-size: 1em; padding-right: 90px; }}
-  .badge {{ position: absolute; top: 10px; right: 10px;
-            font-size: 0.7em; color: white; padding: 4px 8px;
-            border-radius: 4px; font-weight: bold; }}
-  .badge-ok {{ background: #059669; }}
-  .badge-warn {{ background: #e80; }}
-  .badge-danger {{ background: #c00; }}
-  .badge-info {{ background: #888; }}
-  .date {{ text-align: center; color: #888; font-size: 0.85em; margin: 20px 0; }}
+  .port {{ background: white; padding: 12px; border-radius: 10px;
+           box-shadow: 0 1px 4px rgba(0,0,0,0.08); }}
+  .port-nom {{ font-weight: bold; font-size: 1.05em; color: #0c4a6e;
+               margin-bottom: 8px; }}
+  .maree {{ display: flex; justify-content: space-between;
+            font-size: 0.9em; padding: 3px 0; }}
+  .maree .label {{ color: #666; }}
+  .maree .valeur {{ font-weight: bold; color: #0369a1; }}
+  .coef {{ margin-top: 8px; padding: 4px 8px; border-radius: 4px;
+           text-align: center; font-weight: bold; font-size: 0.85em; }}
+  .coef-bas {{ background: #d1fae5; color: #065f46; }}
+  .coef-moyen {{ background: #fef3c7; color: #92400e; }}
+  .coef-haut {{ background: #fee2e2; color: #991b1b; }}
+  .maj {{ text-align: center; color: #888; font-size: 0.8em; margin: 20px 0; }}
 </style>
 </head>
 <body>
 <header>
-  <h1>🌊 Alerte Marees</h1>
-  <div class="compteur">{len(resultats)} ports surveilles</div>
+  <h1>🌊 Marees de France</h1>
+  <div class="date">{aujourdhui}</div>
 </header>
-{cards_html}
-<div class="date">Derniere mise a jour : {date_heure}</div>
+{sections_html}
+<div class="maj">Derniere mise a jour : {date_heure}</div>
 </body>
 </html>'''
 
     with open(chemin, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"   Page HTML generee ({len(resultats)} ports)")
+    print(f"   Page HTML generee")
+
+
+def envoyer_recap(ports_data):
+    """Envoie un recap quotidien groupe par region."""
+    lignes = []
+    for region, ports in PORTS.items():
+        lignes_region = []
+        for port in ports:
+            data = ports_data.get(port["id"])
+            if not data:
+                continue
+            aujourd = data.get("aujourd", {})
+            pm = aujourd.get("pm") or {}
+            bm = aujourd.get("bm") or {}
+            coef = aujourd.get("coef", "?")
+            lignes_region.append(
+                f"  {port['nom']} : PM {pm.get('time', '?')} | BM {bm.get('time', '?')} | Coef {coef}"
+            )
+        if lignes_region:
+            lignes.append(f"\n{region} :")
+            lignes.extend(lignes_region)
+
+    message = "\n".join(lignes)
+    titre = "Recap marees du jour"
+    envoyer_notification(titre, message)
 
 
 def main():
@@ -270,86 +324,92 @@ def main():
         print("[ERREUR] Cle API MAREES_API_KEY non definie")
         return
 
-    etat_precedent = charger_json(FICHIER_ETAT, {})
+    aujourdhui = paris.strftime("%Y-%m-%d")
+    date_debut = aujourdhui
+    date_fin = (paris + timedelta(days=1)).strftime("%Y-%m-%d")
+    date_aujourdhui = paris.strftime("%Y-%m-%d")
+
+    memoire = charger_json(FICHIER_MEMOIRE, {})
     recap_dernier = charger_json(FICHIER_RECAP, {})
 
-    date_debut = paris.strftime("%Y-%m-%d")
-    date_fin = (paris + timedelta(days=7)).strftime("%Y-%m-%d")
+    ports_data = {}
+    total_ports = sum(len(p) for p in PORTS.values())
+    compteur = 0
 
-    resultats = {}
-    grandes_marees = []
+    for region, ports in PORTS.items():
+        for port in ports:
+            compteur += 1
+            print(f"[{compteur}/{total_ports}] {port['nom']}...")
+            data = recuperer_marees(port["id"], date_debut, date_fin)
+            if not data:
+                time.sleep(2)
+                continue
 
-    for port_code, info in PORTS.items():
-        print(f"[{info['nom']}]")
-        data = recuperer_marees(port_code, date_debut, date_fin)
-        if not data:
-            print("   Aucune donnee.\n")
-            resultats[port_code] = {**info, "coef_max": None}
-            continue
+            extrema_aujourd = extraire_marees_jour(data, aujourdhui)
+            extrema_demain = extraire_marees_jour(data, (paris + timedelta(days=1)).strftime("%Y-%m-%d"))
 
-        coef_max = extraire_coef_max(data)
-        resultats[port_code] = {**info, "coef_max": coef_max}
+            pm_aujourd = next((e for e in extrema_aujourd if e.get("type") == "PM"), None)
+            bm_aujourd = next((e for e in extrema_aujourd if e.get("type") == "BM"), None)
+            coef_aujourd = pm_aujourd.get("coef") if pm_aujourd else None
 
-        if coef_max:
-            print(f"   Coefficient max : {coef_max:.0f}")
-            if coef_max >= SEUIL_GRANDE_MAREE:
-                grandes_marees.append({
-                    "nom": info["nom"],
-                    "zone": info["zone"],
-                    "coef": coef_max,
-                })
-        else:
-            print("   Aucun coefficient trouve")
-        print()
+            if not pm_aujourd and extrema_demain:
+                pm_aujourd = next((e for e in extrema_demain if e.get("type") == "PM"), None)
+            if not bm_aujourd and extrema_demain:
+                bm_aujourd = next((e for e in extrema_demain if e.get("type") == "BM"), None)
+
+            ports_data[port["id"]] = {
+                "nom": port["nom"],
+                "region": region,
+                "aujourd": {
+                    "pm": pm_aujourd,
+                    "bm": bm_aujourd,
+                    "coef": coef_aujourd,
+                },
+            }
+
+            time.sleep(2)
+
+    print(f"\n{len(ports_data)} ports recuperes sur {total_ports}\n")
 
     print("-> Generation de la page web...")
-    generer_page_html(resultats)
+    generer_page_html(ports_data)
 
     print("-> Generation des icones...")
     creer_icones_png()
     creer_manifest()
 
-    # Alertes pour grandes marees
-    aujourdhui = paris.strftime("%Y-%m-%d")
-    deja_alerte = etat_precedent.get("derniere_alerte_date") == aujourdhui
+    grandes_marees = []
+    for port_id, info in ports_data.items():
+        coef = info["aujourd"].get("coef")
+        try:
+            if coef and int(coef) >= SEUIL_GRANDE_MAREE:
+                grandes_marees.append({
+                    "nom": info["nom"],
+                    "coef": coef,
+                })
+        except (ValueError, TypeError):
+            pass
 
-    if grandes_marees and not deja_alerte:
-        lignes = []
-        for g in sorted(grandes_marees, key=lambda x: -x["coef"]):
-            niveau = "TRES GRANDE" if g["coef"] >= SEUIL_TRES_GRANDE_MAREE else "GRANDE"
-            lignes.append(f"{g['nom']} ({g['zone']})\n   Coefficient : {g['coef']:.0f} - {niveau} MAREE")
-
-        titre = f"{len(grandes_marees)} grande(s) maree(s) cette semaine"
-        message = "\n\n".join(lignes)
+    if grandes_marees:
+        lignes = [f"{gm['nom']} : coefficient {gm['coef']}" for gm in grandes_marees]
+        titre = f"🌊 Grande maree ! Coef {grandes_marees[0]['coef']} max"
+        message = "\n".join(lignes)
         print(f"\n{titre}\n{message}\n")
         envoyer_notification(titre, message)
-        etat_precedent["derniere_alerte_date"] = aujourdhui
 
-    # Recap quotidien
     derniere_date_recap = recap_dernier.get("date", "")
-    if paris.hour >= HEURE_RECAP and aujourdhui != derniere_date_recap:
-        lignes = []
-        for port_code, info in sorted(resultats.items(), key=lambda x: x[1].get("nom", "ZZZ")):
-            coef = info.get("coef_max")
-            if coef:
-                lignes.append(f"{info['nom']:20s} : {coef:.0f}")
-            else:
-                lignes.append(f"{info['nom']:20s} : N/A")
-
-        titre = f"Recap Marees - {aujourdhui}"
-        message = "\n".join(lignes)
+    if (paris.hour >= HEURE_RECAP and date_aujourdhui != derniere_date_recap):
         print(f"\n-> Envoi du recap quotidien")
-        envoyer_notification(titre, message)
-        recap_dernier["date"] = aujourdhui
+        envoyer_recap(ports_data)
+        recap_dernier["date"] = date_aujourdhui
         recap_dernier["heure_envoi"] = paris.isoformat()
+        sauvegarder_json(FICHIER_RECAP, recap_dernier)
 
     if not grandes_marees:
-        print("\nAucune grande maree cette semaine.")
+        print("\nAucune grande maree aujourd'hui.")
 
-    sauvegarder_json(FICHIER_ETAT, etat_precedent)
-    sauvegarder_json(FICHIER_RECAP, recap_dernier)
-    sauvegarder_json("marees_data.json", resultats)
-    print(f"\nEtat sauvegarde")
+    sauvegarder_json(FICHIER_MEMOIRE, ports_data)
+    print(f"\nDonnees sauvegardees : {len(ports_data)} ports")
 
 
 if __name__ == "__main__":
