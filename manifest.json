@@ -1,11 +1,11 @@
 {
   "name": "Alerte Marees",
   "short_name": "Marees",
-  "description": "Alertes grandes marees sur les ports francais",
+  "description": "Horaires de maree et coefficients des ports de France",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#1e3a8a",
+  "theme_color": "#0c4a6e",
   "icons": [
     {
       "src": "icon-192.png",

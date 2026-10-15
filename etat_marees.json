@@ -5,16 +5,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "04:19",
-        "height": 6.679,
-        "coef": 46
+        "time": "01:19",
+        "height": 7.677,
+        "coef": 74
       },
       "bm": {
         "type": "BM",
-        "time": "11:44",
-        "height": 3.31
+        "time": "08:30",
+        "height": 2.336
       },
-      "coef": 46
+      "coef": 74
     }
   },
   "dieppe": {
@@ -23,16 +23,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "05:41",
-        "height": 7.326,
-        "coef": 42
+        "time": "02:37",
+        "height": 8.531,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "00:04",
-        "height": 2.631
+        "time": "09:27",
+        "height": 2.093
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "ouistreham": {
@@ -41,16 +41,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "04:14",
-        "height": 6.342,
-        "coef": 46
+        "time": "01:10",
+        "height": 7.311,
+        "coef": 74
       },
       "bm": {
         "type": "BM",
-        "time": "11:30",
-        "height": 3.09
+        "time": "08:16",
+        "height": 2.109
       },
-      "coef": 46
+      "coef": 74
     }
   },
   "port-en-bessin": {
@@ -59,16 +59,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "04:10",
-        "height": 5.779,
-        "coef": 46
+        "time": "00:58",
+        "height": 6.694,
+        "coef": 74
       },
       "bm": {
         "type": "BM",
-        "time": "11:04",
-        "height": 2.744
+        "time": "07:53",
+        "height": 1.832
       },
-      "coef": 46
+      "coef": 74
     }
   },
   "cherbourg": {
@@ -77,16 +77,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "02:47",
-        "height": 5.128,
-        "coef": 46
+        "time": "11:53",
+        "height": 6.043,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "09:44",
-        "height": 2.793
+        "time": "06:25",
+        "height": 2.062
       },
-      "coef": 46
+      "coef": 68
     }
   },
   "carteret": {
@@ -95,16 +95,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "01:08",
-        "height": 8.369,
-        "coef": 46
+        "time": "10:33",
+        "height": 9.899,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "08:12",
-        "height": 3.88
+        "time": "05:09",
+        "height": 2.638
       },
-      "coef": 46
+      "coef": 68
     }
   },
   "granville": {
@@ -113,16 +113,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "00:45",
-        "height": 9.837,
-        "coef": 46
+        "time": "10:14",
+        "height": 11.547,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "07:57",
-        "height": 4.475
+        "time": "04:57",
+        "height": 3.106
       },
-      "coef": 46
+      "coef": 68
     }
   },
   "saint-malo": {
@@ -131,16 +131,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "00:41",
-        "height": 9.458,
-        "coef": 46
+        "time": "10:14",
+        "height": 11.153,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "07:38",
-        "height": 4.691
+        "time": "04:41",
+        "height": 3.073
       },
-      "coef": 46
+      "coef": 68
     }
   },
   "cancale": {
@@ -149,16 +149,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "00:54",
-        "height": 10.551,
-        "coef": 46
+        "time": "10:26",
+        "height": 11.847,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "07:01",
-        "height": 6.245
+        "time": "03:30",
+        "height": 5.255
       },
-      "coef": 46
+      "coef": 68
     }
   },
   "paimpol": {
@@ -167,16 +167,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "00:38",
-        "height": 8.072,
-        "coef": 46
+        "time": "09:58",
+        "height": 9.482,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "07:15",
-        "height": 3.669
+        "time": "04:06",
+        "height": 2.431
       },
-      "coef": 46
+      "coef": 68
     }
   },
   "perros-guirec": {
@@ -185,16 +185,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "00:19",
-        "height": 7.272,
-        "coef": 46
+        "time": "09:30",
+        "height": 8.476,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "06:45",
-        "height": 3.407
+        "time": "03:37",
+        "height": 2.221
       },
-      "coef": 46
+      "coef": 68
     }
   },
   "roscoff": {
@@ -203,16 +203,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "12:27",
-        "height": 7.113,
-        "coef": 42
+        "time": "09:08",
+        "height": 8.308,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "06:19",
-        "height": 3.711
+        "time": "03:19",
+        "height": 2.474
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "brest": {
@@ -221,16 +221,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "11:35",
-        "height": 5.638,
-        "coef": 42
+        "time": "08:05",
+        "height": 6.514,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:28",
-        "height": 3.015
+        "time": "02:14",
+        "height": 2.18
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "concarneau": {
@@ -239,16 +239,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "11:36",
-        "height": 4.09,
-        "coef": 42
+        "time": "07:38",
+        "height": 4.706,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:09",
-        "height": 2.197
+        "time": "01:52",
+        "height": 1.646
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "lorient": {
@@ -257,16 +257,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "11:40",
-        "height": 4.203,
-        "coef": 42
+        "time": "07:38",
+        "height": 4.852,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:11",
-        "height": 2.276
+        "time": "01:57",
+        "height": 1.716
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "vannes": {
@@ -275,16 +275,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "01:11",
-        "height": 2.543,
-        "coef": 46
+        "time": "09:58",
+        "height": 2.816,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "07:16",
-        "height": 0.907
+        "time": "04:06",
+        "height": 0.617
       },
-      "coef": 46
+      "coef": 68
     }
   },
   "le-croisic": {
@@ -293,16 +293,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "12:12",
-        "height": 4.256,
-        "coef": 42
+        "time": "07:19",
+        "height": 4.889,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:07",
-        "height": 2.047
+        "time": "01:57",
+        "height": 1.485
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "saint-nazaire": {
@@ -311,16 +311,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "12:18",
-        "height": 4.692,
-        "coef": 42
+        "time": "07:25",
+        "height": 5.554,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:15",
-        "height": 2.392
+        "time": "02:13",
+        "height": 1.819
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "pornic": {
@@ -329,16 +329,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "12:35",
-        "height": 4.594,
-        "coef": 42
+        "time": "07:08",
+        "height": 5.324,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:11",
-        "height": 2.196
+        "time": "02:07",
+        "height": 1.615
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "la-rochelle-pallice": {
@@ -347,16 +347,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "12:31",
-        "height": 5.093,
-        "coef": 42
+        "time": "07:13",
+        "height": 5.685,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "04:58",
-        "height": 2.665
+        "time": "01:58",
+        "height": 1.999
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "royan": {
@@ -365,16 +365,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "12:19",
-        "height": 4.604,
-        "coef": 42
+        "time": "08:01",
+        "height": 5.026,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:17",
-        "height": 2.504
+        "time": "02:09",
+        "height": 1.953
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "cap-ferret": {
@@ -383,16 +383,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "12:04",
-        "height": 2.851,
-        "coef": 42
+        "time": "08:07",
+        "height": 3.07,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:53",
-        "height": 1.073
+        "time": "02:41",
+        "height": 0.702
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "biscarrosse": {
@@ -401,16 +401,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "11:16",
-        "height": 3.432,
-        "coef": 42
+        "time": "07:36",
+        "height": 3.91,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "04:40",
-        "height": 1.588
+        "time": "01:25",
+        "height": 1.05
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "mimizan": {
@@ -419,16 +419,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "11:34",
-        "height": 3.802,
-        "coef": 42
+        "time": "07:46",
+        "height": 4.061,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "05:00",
-        "height": 2.188
+        "time": "01:54",
+        "height": 1.812
       },
-      "coef": 42
+      "coef": 68
     }
   },
   "saint-jean-de-luz": {
@@ -437,16 +437,16 @@
     "aujourd": {
       "pm": {
         "type": "PM",
-        "time": "11:17",
-        "height": 3.595,
-        "coef": 42
+        "time": "07:30",
+        "height": 4.107,
+        "coef": 68
       },
       "bm": {
         "type": "BM",
-        "time": "04:40",
-        "height": 1.816
+        "time": "01:25",
+        "height": 1.254
       },
-      "coef": 42
+      "coef": 68
     }
   }
 }
