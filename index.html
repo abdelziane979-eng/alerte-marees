@@ -27,11 +27,14 @@
   .port { background: white; padding: 12px; border-radius: 10px;
            box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
   .port-nom { font-weight: bold; font-size: 1.05em; color: #0c4a6e;
-               margin-bottom: 8px; }
+               margin-bottom: 8px; padding-bottom: 6px;
+               border-bottom: 1px solid #e5e7eb; }
   .maree { display: flex; justify-content: space-between;
-            font-size: 0.9em; padding: 3px 0; }
-  .maree .label { color: #666; }
-  .maree .valeur { font-weight: bold; color: #0369a1; }
+            font-size: 0.9em; padding: 4px 0; }
+  .maree.pm { color: #0c4a6e; }
+  .maree.bm { color: #0891b2; }
+  .maree .label { color: inherit; }
+  .maree .valeur { font-weight: bold; color: inherit; }
   .coef { margin-top: 8px; padding: 4px 8px; border-radius: 4px;
            text-align: center; font-weight: bold; font-size: 0.85em; }
   .coef-bas { background: #d1fae5; color: #065f46; }
@@ -43,309 +46,534 @@
 <body>
 <header>
   <h1>🌊 Marees de France</h1>
-  <div class="date">15/10/2026</div>
+  <div class="date">16/10/2026</div>
 </header>
 <h2>Manche Est</h2><div class="ports">
             <div class="port">
                 <div class="port-nom">Le Havre</div>
-                <div class="maree">
+                
+                <div class="maree pm">
                     <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">01:19 - 7.677m</span>
+                    <span class="valeur">01:50 - 7.37m</span>
                 </div>
-                <div class="maree">
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">08:30 - 2.336m</span>
+                    <span class="valeur">08:51 - 2.734m</span>
                 </div>
-                <div class="coef coef-moyen">Coef : 74</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">14:02 - 7.388m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">21:06 - 2.659m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 62</div>
             </div>
             <div class="port">
                 <div class="port-nom">Dieppe</div>
-                <div class="maree">
+                
+                <div class="maree pm">
                     <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">02:37 - 8.531m</span>
+                    <span class="valeur">03:09 - 8.101m</span>
                 </div>
-                <div class="maree">
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">09:27 - 2.093m</span>
+                    <span class="valeur">09:57 - 2.497m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">15:21 - 8.016m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">22:15 - 2.451m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div></div><h2>Normandie</h2><div class="ports">
             <div class="port">
                 <div class="port-nom">Ouistreham</div>
-                <div class="maree">
+                
+                <div class="maree pm">
                     <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">01:10 - 7.311m</span>
+                    <span class="valeur">01:41 - 7.008m</span>
                 </div>
-                <div class="maree">
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">08:16 - 2.109m</span>
+                    <span class="valeur">08:39 - 2.501m</span>
                 </div>
-                <div class="coef coef-moyen">Coef : 74</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">13:54 - 7.026m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">20:55 - 2.43m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 62</div>
             </div>
             <div class="port">
                 <div class="port-nom">Port-en-Bessin</div>
-                <div class="maree">
+                
+                <div class="maree pm">
                     <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">00:58 - 6.694m</span>
+                    <span class="valeur">01:31 - 6.395m</span>
                 </div>
-                <div class="maree">
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">07:53 - 1.832m</span>
+                    <span class="valeur">08:19 - 2.184m</span>
                 </div>
-                <div class="coef coef-moyen">Coef : 74</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">13:44 - 6.408m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">20:37 - 2.107m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 62</div>
             </div>
             <div class="port">
                 <div class="port-nom">Cherbourg</div>
-                <div class="maree">
+                
+                <div class="maree pm">
                     <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">11:53 - 6.043m</span>
+                    <span class="valeur">00:13 - 5.704m</span>
                 </div>
-                <div class="maree">
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">06:25 - 2.062m</span>
+                    <span class="valeur">06:54 - 2.399m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">12:25 - 5.738m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">19:17 - 2.363m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 62</div>
             </div>
             <div class="port">
                 <div class="port-nom">Carteret</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">10:33 - 9.899m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">05:09 - 2.638m</span>
+                    <span class="valeur">05:35 - 3.176m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">11:03 - 9.316m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">17:54 - 3.254m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">23:22 - 8.735m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Granville</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">10:14 - 11.547m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">04:57 - 3.106m</span>
+                    <span class="valeur">05:22 - 3.719m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">10:44 - 10.878m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">17:41 - 3.827m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">23:01 - 10.243m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div></div><h2>Bretagne Nord</h2><div class="ports">
             <div class="port">
                 <div class="port-nom">Saint-Malo</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">10:14 - 11.153m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">04:41 - 3.073m</span>
+                    <span class="valeur">05:07 - 3.71m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">10:43 - 10.533m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">17:26 - 3.847m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">23:01 - 9.93m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Cancale</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">10:26 - 11.847m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">03:30 - 5.255m</span>
+                    <span class="valeur">04:17 - 5.421m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">10:57 - 11.31m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">16:54 - 5.469m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">23:15 - 10.787m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Paimpol</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">09:58 - 9.482m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">04:06 - 2.431m</span>
+                    <span class="valeur">04:35 - 2.982m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">10:28 - 8.931m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">16:56 - 3.097m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">22:47 - 8.394m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Perros-Guirec</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">09:30 - 8.476m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">03:37 - 2.221m</span>
+                    <span class="valeur">04:06 - 2.735m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">10:01 - 8.006m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">16:27 - 2.851m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">22:22 - 7.522m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Roscoff</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">09:08 - 8.308m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">03:19 - 2.474m</span>
+                    <span class="valeur">03:48 - 2.972m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">09:39 - 7.897m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">16:08 - 3.093m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">21:59 - 7.44m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Brest</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">08:05 - 6.514m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">02:14 - 2.18m</span>
+                    <span class="valeur">02:47 - 2.564m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:39 - 6.17m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">15:11 - 2.655m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">21:01 - 5.791m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div></div><h2>Bretagne Sud</h2><div class="ports">
             <div class="port">
                 <div class="port-nom">Concarneau</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:38 - 4.706m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">01:52 - 1.646m</span>
+                    <span class="valeur">02:27 - 1.941m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:14 - 4.476m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">14:55 - 2.005m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:38 - 4.16m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Lorient</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:38 - 4.852m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">01:57 - 1.716m</span>
+                    <span class="valeur">02:32 - 2.021m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:14 - 4.624m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">14:59 - 2.082m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:38 - 4.303m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Vannes</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">09:58 - 2.816m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">04:06 - 0.617m</span>
+                    <span class="valeur">04:43 - 0.736m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">10:34 - 2.716m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">17:09 - 0.67m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">23:03 - 2.484m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Le Croisic</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:19 - 4.889m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">01:57 - 1.485m</span>
+                    <span class="valeur">02:33 - 1.828m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">07:52 - 4.64m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">15:00 - 1.916m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:13 - 4.291m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div></div><h2>Vendee & Charente</h2><div class="ports">
             <div class="port">
                 <div class="port-nom">Saint-Nazaire</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:25 - 5.554m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">02:13 - 1.819m</span>
+                    <span class="valeur">02:49 - 2.187m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:01 - 5.305m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">15:14 - 2.256m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:24 - 4.941m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Pornic</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:08 - 5.324m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">02:07 - 1.615m</span>
+                    <span class="valeur">02:43 - 1.989m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">07:42 - 5.07m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">15:08 - 2.086m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:01 - 4.706m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">La Rochelle</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:13 - 5.685m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">01:58 - 1.999m</span>
+                    <span class="valeur">02:36 - 2.395m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">07:47 - 5.445m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">15:01 - 2.481m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:11 - 5.095m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Royan</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">08:01 - 5.026m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">02:09 - 1.953m</span>
+                    <span class="valeur">02:45 - 2.202m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:39 - 4.792m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">15:12 - 2.261m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">21:06 - 4.469m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div></div><h2>Gironde & Landes</h2><div class="ports">
             <div class="port">
                 <div class="port-nom">Cap Ferret</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">08:07 - 3.07m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">02:41 - 0.702m</span>
+                    <span class="valeur">03:11 - 0.839m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:37 - 2.914m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">15:35 - 0.881m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:54 - 2.701m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Biscarrosse</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:36 - 3.91m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">01:25 - 1.05m</span>
+                    <span class="valeur">01:58 - 1.293m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:11 - 3.691m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">14:25 - 1.384m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:33 - 3.407m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div>
             <div class="port">
                 <div class="port-nom">Mimizan</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:46 - 4.061m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">01:54 - 1.812m</span>
+                    <span class="valeur">02:29 - 1.949m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:20 - 3.914m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">15:02 - 1.963m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:41 - 3.653m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div></div><h2>Pays Basque</h2><div class="ports">
             <div class="port">
                 <div class="port-nom">Saint-Jean-de-Luz</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">07:30 - 4.107m</span>
-                </div>
-                <div class="maree">
+                
+                <div class="maree bm">
                     <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">01:25 - 1.254m</span>
+                    <span class="valeur">01:58 - 1.475m</span>
                 </div>
-                <div class="coef coef-bas">Coef : 68</div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">08:05 - 3.904m</span>
+                </div>
+                <div class="maree bm">
+                    <span class="label">🏖️ Basse mer</span>
+                    <span class="valeur">14:26 - 1.515m</span>
+                </div>
+                <div class="maree pm">
+                    <span class="label">🌊 Pleine mer</span>
+                    <span class="valeur">20:28 - 3.575m</span>
+                </div>
+                <div class="coef coef-bas">Coef : 56</div>
             </div></div>
-<div class="maj">Derniere mise a jour : 15/10/2026 a 16h19</div>
+<div class="maj">Derniere mise a jour : 16/10/2026 a 11h08</div>
 </body>
 </html>
