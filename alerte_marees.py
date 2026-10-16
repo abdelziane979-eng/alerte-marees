@@ -2,7 +2,7 @@
 """
 Alerte Marees - Ports de France
 Surveille les marees de 25 ports (Manche, Atlantique, Mer du Nord)
-Version GitHub avec cle API + topic depuis variables d'environnement
+Version GitHub - affiche TOUTES les marees du jour (2 PM + 2 BM)
 """
 
 import requests
@@ -22,7 +22,6 @@ API_KEY = os.environ.get("MAREES_API_KEY", "")
 
 URL_API = "https://api-maree.fr/tide-extrema"
 
-# Ports groupes par region
 PORTS = {
     "Manche Est": [
         {"id": "le-havre", "nom": "Le Havre"},
@@ -90,7 +89,6 @@ def sauvegarder_json(fichier, data):
 
 
 def creer_icones_png():
-    """Genere les icones PNG 192x192 et 512x512 - vague bleue foncee."""
     for taille in (192, 512):
         img = Image.new("RGBA", (taille, taille), (0, 0, 0, 0))
         draw = ImageDraw.Draw(img)
@@ -156,7 +154,6 @@ def envoyer_notification(titre, message, priorite="max"):
 
 
 def recuperer_marees(port_id, date_debut, date_fin):
-    """Recupere les marees pour un port sur une periode donnee."""
     params = {
         "site": port_id,
         "from": date_debut,
@@ -180,15 +177,23 @@ def recuperer_marees(port_id, date_debut, date_fin):
 
 
 def extraire_marees_jour(data, date_jour):
-    """Extrait les marees d'un jour donne."""
+    """Extrait TOUTES les marees d'un jour donne."""
     for j in data.get("data", []):
         if j.get("date") == date_jour:
             return j.get("extrema", [])
     return []
 
 
+def extraire_pm_bm(extrema):
+    """Separe les PM et BM, triees par heure."""
+    pm = sorted([e for e in extrema if e.get("type") == "PM"],
+                key=lambda x: x.get("time", ""))
+    bm = sorted([e for e in extrema if e.get("type") == "BM"],
+                key=lambda x: x.get("time", ""))
+    return pm, bm
+
+
 def generer_page_html(ports_data, chemin="index.html"):
-    """Genere la page web avec toutes les marees."""
     paris = datetime.now(ZoneInfo("Europe/Paris"))
     date_heure = paris.strftime("%d/%m/%Y a %Hh%M")
     aujourdhui = paris.strftime("%d/%m/%Y")
@@ -202,8 +207,8 @@ def generer_page_html(ports_data, chemin="index.html"):
                 continue
 
             aujourd = data.get("aujourd", {})
-            pm = aujourd.get("pm", {}) or {}
-            bm = aujourd.get("bm", {}) or {}
+            pm_list = aujourd.get("pm_list", [])
+            bm_list = aujourd.get("bm_list", [])
             coef = aujourd.get("coef", "?")
 
             coef_class = "coef-bas"
@@ -216,17 +221,40 @@ def generer_page_html(ports_data, chemin="index.html"):
             except (ValueError, TypeError):
                 pass
 
+            # Construire la liste des marees triees par heure
+            marees = []
+            for e in pm_list:
+                marees.append({
+                    "type": "PM",
+                    "icone": "🌊",
+                    "label": "Pleine mer",
+                    "time": e.get("time", "?"),
+                    "height": e.get("height", "?"),
+                })
+            for e in bm_list:
+                marees.append({
+                    "type": "BM",
+                    "icone": "🏖️",
+                    "label": "Basse mer",
+                    "time": e.get("time", "?"),
+                    "height": e.get("height", "?"),
+                })
+
+            marees.sort(key=lambda m: m["time"])
+
+            marees_html = ""
+            for m in marees:
+                classe = "pm" if m["type"] == "PM" else "bm"
+                marees_html += f'''
+                <div class="maree {classe}">
+                    <span class="label">{m["icone"]} {m["label"]}</span>
+                    <span class="valeur">{m["time"]} - {m["height"]}m</span>
+                </div>'''
+
             cards.append(f'''
             <div class="port">
                 <div class="port-nom">{port["nom"]}</div>
-                <div class="maree">
-                    <span class="label">🌊 Pleine mer</span>
-                    <span class="valeur">{pm.get("time", "?")} - {pm.get("height", "?")}m</span>
-                </div>
-                <div class="maree">
-                    <span class="label">🏖️ Basse mer</span>
-                    <span class="valeur">{bm.get("time", "?")} - {bm.get("height", "?")}m</span>
-                </div>
+                {marees_html}
                 <div class="coef {coef_class}">Coef : {coef}</div>
             </div>''')
 
@@ -262,11 +290,14 @@ def generer_page_html(ports_data, chemin="index.html"):
   .port {{ background: white; padding: 12px; border-radius: 10px;
            box-shadow: 0 1px 4px rgba(0,0,0,0.08); }}
   .port-nom {{ font-weight: bold; font-size: 1.05em; color: #0c4a6e;
-               margin-bottom: 8px; }}
+               margin-bottom: 8px; padding-bottom: 6px;
+               border-bottom: 1px solid #e5e7eb; }}
   .maree {{ display: flex; justify-content: space-between;
-            font-size: 0.9em; padding: 3px 0; }}
-  .maree .label {{ color: #666; }}
-  .maree .valeur {{ font-weight: bold; color: #0369a1; }}
+            font-size: 0.9em; padding: 4px 0; }}
+  .maree.pm {{ color: #0c4a6e; }}
+  .maree.bm {{ color: #0891b2; }}
+  .maree .label {{ color: inherit; }}
+  .maree .valeur {{ font-weight: bold; color: inherit; }}
   .coef {{ margin-top: 8px; padding: 4px 8px; border-radius: 4px;
            text-align: center; font-weight: bold; font-size: 0.85em; }}
   .coef-bas {{ background: #d1fae5; color: #065f46; }}
@@ -291,7 +322,6 @@ def generer_page_html(ports_data, chemin="index.html"):
 
 
 def envoyer_recap(ports_data):
-    """Envoie un recap quotidien groupe par region."""
     lignes = []
     for region, ports in PORTS.items():
         lignes_region = []
@@ -300,12 +330,20 @@ def envoyer_recap(ports_data):
             if not data:
                 continue
             aujourd = data.get("aujourd", {})
-            pm = aujourd.get("pm") or {}
-            bm = aujourd.get("bm") or {}
+            pm_list = aujourd.get("pm_list", [])
+            bm_list = aujourd.get("bm_list", [])
             coef = aujourd.get("coef", "?")
-            lignes_region.append(
-                f"  {port['nom']} : PM {pm.get('time', '?')} | BM {bm.get('time', '?')} | Coef {coef}"
-            )
+
+            # Construire la liste triee des marees
+            marees = []
+            for e in pm_list:
+                marees.append(("PM", e.get("time", "?"), e.get("height", "?")))
+            for e in bm_list:
+                marees.append(("BM", e.get("time", "?"), e.get("height", "?")))
+            marees.sort(key=lambda m: m[1])
+
+            marees_txt = " | ".join([f"{t} {h}h ({ht}m)" for (t, h, ht) in marees])
+            lignes_region.append(f"  {port['nom']} : {marees_txt} | Coef {coef}")
         if lignes_region:
             lignes.append(f"\n{region} :")
             lignes.extend(lignes_region)
@@ -348,24 +386,26 @@ def main():
             extrema_aujourd = extraire_marees_jour(data, aujourdhui)
             extrema_demain = extraire_marees_jour(data, (paris + timedelta(days=1)).strftime("%Y-%m-%d"))
 
-            pm_aujourd = next((e for e in extrema_aujourd if e.get("type") == "PM"), None)
-            bm_aujourd = next((e for e in extrema_aujourd if e.get("type") == "BM"), None)
-            coef_aujourd = pm_aujourd.get("coef") if pm_aujourd else None
+            pm_list, bm_list = extraire_pm_bm(extrema_aujourd)
 
-            if not pm_aujourd and extrema_demain:
-                pm_aujourd = next((e for e in extrema_demain if e.get("type") == "PM"), None)
-            if not bm_aujourd and extrema_demain:
-                bm_aujourd = next((e for e in extrema_demain if e.get("type") == "BM"), None)
+            # Si rien aujourd'hui, prendre demain
+            if not pm_list and not bm_list and extrema_demain:
+                pm_list, bm_list = extraire_pm_bm(extrema_demain)
+
+            # Coefficient = coef de la 1ere PM
+            coef_aujourd = pm_list[0].get("coef") if pm_list else None
 
             ports_data[port["id"]] = {
                 "nom": port["nom"],
                 "region": region,
                 "aujourd": {
-                    "pm": pm_aujourd,
-                    "bm": bm_aujourd,
+                    "pm_list": pm_list,
+                    "bm_list": bm_list,
                     "coef": coef_aujourd,
                 },
             }
+
+            print(f"   {len(pm_list)} PM et {len(bm_list)} BM")
 
             time.sleep(2)
 
@@ -378,6 +418,7 @@ def main():
     creer_icones_png()
     creer_manifest()
 
+    # Detection grandes marees (coef >= 90)
     grandes_marees = []
     for port_id, info in ports_data.items():
         coef = info["aujourd"].get("coef")
@@ -397,6 +438,7 @@ def main():
         print(f"\n{titre}\n{message}\n")
         envoyer_notification(titre, message)
 
+    # Recap quotidien
     derniere_date_recap = recap_dernier.get("date", "")
     if (paris.hour >= HEURE_RECAP and date_aujourdhui != derniere_date_recap):
         print(f"\n-> Envoi du recap quotidien")
