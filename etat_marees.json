@@ -6,30 +6,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "10:44",
-          "height": 8.444,
-          "coef": 100
+          "time": "11:19",
+          "height": 8.451,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "23:02",
-          "height": 8.395,
-          "coef": 100
+          "time": "23:41",
+          "height": 8.299,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "05:41",
-          "height": 1.168
+          "time": "06:20",
+          "height": 1.227
         },
         {
           "type": "BM",
-          "time": "18:02",
-          "height": 1.107
+          "time": "18:41",
+          "height": 1.172
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "dieppe": {
@@ -39,24 +39,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "11:57",
-          "height": 9.497,
-          "coef": 100
+          "time": "00:17",
+          "height": 9.426,
+          "coef": 99
+        },
+        {
+          "type": "PM",
+          "time": "12:36",
+          "height": 9.461,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "06:36",
-          "height": 0.983
+          "time": "07:17",
+          "height": 1.032
         },
         {
           "type": "BM",
-          "time": "18:57",
-          "height": 0.89
+          "time": "19:38",
+          "height": 0.965
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "ouistreham": {
@@ -66,30 +72,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "10:35",
-          "height": 8.055,
-          "coef": 100
+          "time": "11:10",
+          "height": 8.058,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "22:53",
-          "height": 8.008,
-          "coef": 100
+          "time": "23:32",
+          "height": 7.913,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "05:27",
-          "height": 0.967
+          "time": "06:06",
+          "height": 1.018
         },
         {
           "type": "BM",
-          "time": "17:47",
-          "height": 0.907
+          "time": "18:27",
+          "height": 0.963
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "port-en-bessin": {
@@ -99,30 +105,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "10:21",
-          "height": 7.384,
-          "coef": 100
+          "time": "10:57",
+          "height": 7.382,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "22:40",
-          "height": 7.342,
-          "coef": 100
+          "time": "23:20",
+          "height": 7.245,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "05:05",
-          "height": 0.806
+          "time": "05:44",
+          "height": 0.841
         },
         {
           "type": "BM",
-          "time": "17:25",
-          "height": 0.749
+          "time": "18:04",
+          "height": 0.784
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "cherbourg": {
@@ -132,30 +138,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "09:02",
-          "height": 6.806,
-          "coef": 100
+          "time": "09:41",
+          "height": 6.822,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "21:23",
-          "height": 6.771,
-          "coef": 100
+          "time": "22:04",
+          "height": 6.654,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "03:34",
-          "height": 1.078
+          "time": "04:14",
+          "height": 1.11
         },
         {
           "type": "BM",
-          "time": "15:55",
-          "height": 1.018
+          "time": "16:37",
+          "height": 1.042
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "carteret": {
@@ -165,30 +171,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "07:46",
-          "height": 11.294,
-          "coef": 100
+          "time": "08:25",
+          "height": 11.326,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "20:06",
-          "height": 11.298,
-          "coef": 100
+          "time": "20:46",
+          "height": 11.101,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "02:27",
-          "height": 1.082
+          "time": "03:07",
+          "height": 1.104
         },
         {
           "type": "BM",
-          "time": "14:47",
-          "height": 0.973
+          "time": "15:28",
+          "height": 1.046
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "granville": {
@@ -198,30 +204,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "07:28",
-          "height": 13.151,
-          "coef": 100
+          "time": "08:07",
+          "height": 13.179,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "19:48",
-          "height": 13.164,
-          "coef": 100
+          "time": "20:28",
+          "height": 12.938,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "02:16",
-          "height": 1.233
+          "time": "02:56",
+          "height": 1.259
         },
         {
           "type": "BM",
-          "time": "14:36",
-          "height": 1.117
+          "time": "15:17",
+          "height": 1.219
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "saint-malo": {
@@ -231,30 +237,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "07:27",
-          "height": 12.751,
-          "coef": 100
+          "time": "08:06",
+          "height": 12.73,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "19:47",
-          "height": 12.792,
-          "coef": 100
+          "time": "20:27",
+          "height": 12.521,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "01:56",
-          "height": 1.257
+          "time": "02:37",
+          "height": 1.342
         },
         {
           "type": "BM",
-          "time": "14:16",
-          "height": 1.211
+          "time": "14:58",
+          "height": 1.365
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "cancale": {
@@ -264,52 +270,52 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "01:33",
-          "height": 5.345,
-          "coef": 100
+          "time": "02:23",
+          "height": 5.378,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "07:38",
-          "height": 13.31,
-          "coef": 100
+          "time": "08:18",
+          "height": 13.259,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "13:57",
-          "height": 5.286,
-          "coef": 100
+          "time": "14:47",
+          "height": 5.323,
+          "coef": 96
         },
         {
           "type": "PM",
-          "time": "19:58",
-          "height": 13.295,
-          "coef": 100
+          "time": "20:39",
+          "height": 13.052,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "00:27",
-          "height": 5.242
+          "time": "01:03",
+          "height": 5.211
         },
         {
           "type": "BM",
-          "time": "03:15",
-          "height": 4.987
+          "time": "03:57",
+          "height": 5.081
         },
         {
           "type": "BM",
-          "time": "12:46",
-          "height": 5.16
+          "time": "13:24",
+          "height": 5.148
         },
         {
           "type": "BM",
-          "time": "15:36",
-          "height": 4.95
+          "time": "16:18",
+          "height": 5.055
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "paimpol": {
@@ -319,30 +325,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "07:12",
-          "height": 10.81,
-          "coef": 100
+          "time": "07:52",
+          "height": 10.816,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "19:33",
-          "height": 10.814,
-          "coef": 100
+          "time": "20:14",
+          "height": 10.611,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "01:20",
-          "height": 0.968
+          "time": "02:00",
+          "height": 0.985
         },
         {
           "type": "BM",
-          "time": "13:40",
-          "height": 0.864
+          "time": "14:21",
+          "height": 0.934
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "perros-guirec": {
@@ -352,30 +358,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "06:44",
-          "height": 9.584,
-          "coef": 100
+          "time": "07:23",
+          "height": 9.593,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "19:05",
-          "height": 9.589,
-          "coef": 100
+          "time": "19:45",
+          "height": 9.413,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "00:47",
-          "height": 0.916
+          "time": "01:26",
+          "height": 0.92
         },
         {
           "type": "BM",
-          "time": "13:07",
-          "height": 0.814
+          "time": "13:48",
+          "height": 0.865
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "roscoff": {
@@ -385,30 +391,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "06:18",
-          "height": 9.353,
-          "coef": 100
+          "time": "06:56",
+          "height": 9.349,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "18:38",
-          "height": 9.382,
-          "coef": 100
+          "time": "19:18",
+          "height": 9.195,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "00:25",
-          "height": 1.163
+          "time": "01:05",
+          "height": 1.2
         },
         {
           "type": "BM",
-          "time": "12:44",
-          "height": 1.109
+          "time": "13:26",
+          "height": 1.187
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "brest": {
@@ -418,30 +424,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "05:10",
-          "height": 7.412,
-          "coef": 100
+          "time": "05:49",
+          "height": 7.411,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "17:30",
-          "height": 7.445,
-          "coef": 100
+          "time": "18:11",
+          "height": 7.285,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:33",
-          "height": 1.11
-        },
-        {
-          "type": "BM",
-          "time": "23:54",
-          "height": 1.196
+          "time": "12:16",
+          "height": 1.177
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "concarneau": {
@@ -451,30 +452,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:43",
-          "height": 5.308,
-          "coef": 100
+          "time": "05:21",
+          "height": 5.316,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "17:03",
-          "height": 5.334,
-          "coef": 100
+          "time": "17:44",
+          "height": 5.211,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:03",
-          "height": 0.817
-        },
-        {
-          "type": "BM",
-          "time": "23:24",
-          "height": 0.885
+          "time": "11:46",
+          "height": 0.852
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "lorient": {
@@ -484,30 +480,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:47",
-          "height": 5.456,
-          "coef": 100
+          "time": "05:25",
+          "height": 5.462,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "17:07",
-          "height": 5.479,
-          "coef": 100
+          "time": "17:47",
+          "height": 5.353,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:07",
-          "height": 0.875
-        },
-        {
-          "type": "BM",
-          "time": "23:28",
-          "height": 0.939
+          "time": "11:50",
+          "height": 0.908
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "vannes": {
@@ -517,30 +508,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "07:17",
-          "height": 3.141,
-          "coef": 100
+          "time": "07:56",
+          "height": 3.131,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "19:41",
-          "height": 3.094,
-          "coef": 100
+          "time": "20:22",
+          "height": 3.022,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "01:13",
-          "height": 0.284
+          "time": "01:53",
+          "height": 0.337
         },
         {
           "type": "BM",
-          "time": "13:34",
-          "height": 0.193
+          "time": "14:16",
+          "height": 0.241
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "le-croisic": {
@@ -550,30 +541,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:40",
-          "height": 5.519,
-          "coef": 100
+          "time": "05:15",
+          "height": 5.514,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "16:59",
-          "height": 5.573,
-          "coef": 100
+          "time": "17:37",
+          "height": 5.431,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:04",
-          "height": 0.61
-        },
-        {
-          "type": "BM",
-          "time": "23:26",
-          "height": 0.66
+          "time": "11:47",
+          "height": 0.617
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "saint-nazaire": {
@@ -583,30 +569,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:42",
-          "height": 6.143,
-          "coef": 100
+          "time": "05:16",
+          "height": 6.144,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "17:00",
-          "height": 6.175,
-          "coef": 100
+          "time": "17:36",
+          "height": 6.033,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:19",
-          "height": 0.828
-        },
-        {
-          "type": "BM",
-          "time": "23:40",
-          "height": 0.885
+          "time": "12:03",
+          "height": 0.853
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "pornic": {
@@ -616,30 +597,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:35",
-          "height": 5.933,
-          "coef": 100
+          "time": "05:07",
+          "height": 5.931,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "16:52",
-          "height": 5.984,
-          "coef": 100
+          "time": "17:27",
+          "height": 5.841,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:14",
-          "height": 0.685
-        },
-        {
-          "type": "BM",
-          "time": "23:36",
-          "height": 0.732
+          "time": "11:57",
+          "height": 0.69
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "la-rochelle-pallice": {
@@ -649,30 +625,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:46",
-          "height": 6.336,
-          "coef": 100
+          "time": "05:21",
+          "height": 6.291,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "17:06",
-          "height": 6.365,
-          "coef": 100
+          "time": "17:45",
+          "height": 6.18,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:02",
-          "height": 1.003
-        },
-        {
-          "type": "BM",
-          "time": "23:24",
-          "height": 1.083
+          "time": "11:46",
+          "height": 1.018
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "royan": {
@@ -682,30 +653,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "05:09",
-          "height": 5.6,
-          "coef": 100
+          "time": "05:48",
+          "height": 5.588,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "17:31",
-          "height": 5.653,
-          "coef": 100
+          "time": "18:13",
+          "height": 5.502,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:21",
-          "height": 1.237
-        },
-        {
-          "type": "BM",
-          "time": "23:43",
-          "height": 1.339
+          "time": "12:04",
+          "height": 1.263
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "cap-ferret": {
@@ -715,25 +681,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "05:18",
-          "height": 3.496,
-          "coef": 100
+          "time": "05:56",
+          "height": 3.508,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "17:37",
-          "height": 3.509,
-          "coef": 100
+          "time": "18:16",
+          "height": 3.433,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "12:17",
-          "height": 0.343
+          "time": "00:37",
+          "height": 0.373
+        },
+        {
+          "type": "BM",
+          "time": "12:58",
+          "height": 0.375
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "biscarrosse": {
@@ -743,30 +714,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:38",
-          "height": 4.501,
-          "coef": 100
+          "time": "05:17",
+          "height": 4.532,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "16:57",
-          "height": 4.527,
-          "coef": 100
+          "time": "17:39",
+          "height": 4.433,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "10:45",
-          "height": 0.424
+          "time": "11:26",
+          "height": 0.44
         },
         {
           "type": "BM",
-          "time": "23:04",
-          "height": 0.435
+          "time": "23:46",
+          "height": 0.537
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "mimizan": {
@@ -776,30 +747,25 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:48",
-          "height": 4.491,
-          "coef": 100
+          "time": "05:28",
+          "height": 4.514,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "17:09",
-          "height": 4.537,
-          "coef": 100
+          "time": "17:51",
+          "height": 4.456,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "11:13",
-          "height": 1.573
-        },
-        {
-          "type": "BM",
-          "time": "23:33",
-          "height": 1.612
+          "time": "11:53",
+          "height": 1.558
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   },
   "saint-jean-de-luz": {
@@ -809,30 +775,30 @@
       "pm_list": [
         {
           "type": "PM",
-          "time": "04:38",
-          "height": 4.533,
-          "coef": 100
+          "time": "05:15",
+          "height": 4.567,
+          "coef": 99
         },
         {
           "type": "PM",
-          "time": "16:58",
-          "height": 4.542,
-          "coef": 100
+          "time": "17:39",
+          "height": 4.445,
+          "coef": 96
         }
       ],
       "bm_list": [
         {
           "type": "BM",
-          "time": "10:47",
-          "height": 0.692
+          "time": "11:28",
+          "height": 0.696
         },
         {
           "type": "BM",
-          "time": "23:06",
-          "height": 0.778
+          "time": "23:45",
+          "height": 0.872
         }
       ],
-      "coef": 100
+      "coef": 99
     }
   }
 }
