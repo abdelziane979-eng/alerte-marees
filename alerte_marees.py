@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Alerte Marees - Ports de France
-Surveille les marees de 25 ports (Manche, Atlantique, Mer du Nord)
-Version GitHub - affiche TOUTES les marees du jour (2 PM + 2 BM)
+Surveille les marees de 28 ports (Manche, Atlantique, Mer du Nord)
+Version GitHub - affiche TOUTES les marees du jour (garantit 2 PM + 2 BM)
 """
 
 import requests
@@ -37,6 +37,9 @@ PORTS = {
     "Bretagne Nord": [
         {"id": "saint-malo", "nom": "Saint-Malo"},
         {"id": "cancale", "nom": "Cancale"},
+        {"id": "erquy", "nom": "Erquy"},
+        {"id": "saint-cast", "nom": "Saint-Cast"},
+        {"id": "pleneuf", "nom": "Pléneuf"},
         {"id": "paimpol", "nom": "Paimpol"},
         {"id": "perros-guirec", "nom": "Perros-Guirec"},
         {"id": "roscoff", "nom": "Roscoff"},
@@ -177,7 +180,6 @@ def recuperer_marees(port_id, date_debut, date_fin):
 
 
 def extraire_marees_jour(data, date_jour):
-    """Extrait TOUTES les marees d'un jour donne."""
     for j in data.get("data", []):
         if j.get("date") == date_jour:
             return j.get("extrema", [])
@@ -185,7 +187,6 @@ def extraire_marees_jour(data, date_jour):
 
 
 def extraire_pm_bm(extrema):
-    """Separe les PM et BM, triees par heure."""
     pm = sorted([e for e in extrema if e.get("type") == "PM"],
                 key=lambda x: x.get("time", ""))
     bm = sorted([e for e in extrema if e.get("type") == "BM"],
@@ -221,7 +222,6 @@ def generer_page_html(ports_data, chemin="index.html"):
             except (ValueError, TypeError):
                 pass
 
-            # Construire la liste des marees triees par heure
             marees = []
             for e in pm_list:
                 marees.append({
@@ -334,7 +334,6 @@ def envoyer_recap(ports_data):
             bm_list = aujourd.get("bm_list", [])
             coef = aujourd.get("coef", "?")
 
-            # Construire la liste triee des marees
             marees = []
             for e in pm_list:
                 marees.append(("PM", e.get("time", "?"), e.get("height", "?")))
@@ -363,8 +362,7 @@ def main():
         return
 
     aujourdhui = paris.strftime("%Y-%m-%d")
-    date_debut = aujourdhui
-    date_fin = (paris + timedelta(days=1)).strftime("%Y-%m-%d")
+    demain = (paris + timedelta(days=1)).strftime("%Y-%m-%d")
     date_aujourdhui = paris.strftime("%Y-%m-%d")
 
     memoire = charger_json(FICHIER_MEMOIRE, {})
@@ -378,19 +376,28 @@ def main():
         for port in ports:
             compteur += 1
             print(f"[{compteur}/{total_ports}] {port['nom']}...")
-            data = recuperer_marees(port["id"], date_debut, date_fin)
+            data = recuperer_marees(port["id"], aujourdhui, demain)
             if not data:
                 time.sleep(2)
                 continue
 
             extrema_aujourd = extraire_marees_jour(data, aujourdhui)
-            extrema_demain = extraire_marees_jour(data, (paris + timedelta(days=1)).strftime("%Y-%m-%d"))
+            extrema_demain = extraire_marees_jour(data, demain)
 
             pm_list, bm_list = extraire_pm_bm(extrema_aujourd)
+            pm_demain, bm_demain = extraire_pm_bm(extrema_demain)
 
-            # Si rien aujourd'hui, prendre demain
-            if not pm_list and not bm_list and extrema_demain:
-                pm_list, bm_list = extraire_pm_bm(extrema_demain)
+            # Si on a moins de 2 PM, on complète avec la 1ère PM de demain
+            if len(pm_list) < 2 and len(pm_demain) > 0:
+                pm_next = pm_demain[0].copy()
+                pm_next["time"] = pm_next.get("time", "?") + " (demain)"
+                pm_list.append(pm_next)
+
+            # Si on a moins de 2 BM, on complète avec la 1ère BM de demain
+            if len(bm_list) < 2 and len(bm_demain) > 0:
+                bm_next = bm_demain[0].copy()
+                bm_next["time"] = bm_next.get("time", "?") + " (demain)"
+                bm_list.append(bm_next)
 
             # Coefficient = coef de la 1ere PM
             coef_aujourd = pm_list[0].get("coef") if pm_list else None
@@ -406,7 +413,6 @@ def main():
             }
 
             print(f"   {len(pm_list)} PM et {len(bm_list)} BM")
-
             time.sleep(2)
 
     print(f"\n{len(ports_data)} ports recuperes sur {total_ports}\n")
